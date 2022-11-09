@@ -1,0 +1,32 @@
+:root{
+    --space:1.5rem;
+}
+.stack {
+    background-color: #e6e6e6;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    /* if only child, elements will overflow with a high --space */
+    /* overflow: scroll;  or hidden*/
+}
+
+/* if you want recursive nesting */
+/* .stack * + * {
+    margin-block-start: var(--space, 1.5rem);
+} */
+
+.stack > * + * {
+    margin-block-start: var(--space, 1.5rem);
+}
+
+.stack > :nth-child(3) {
+    margin-block-end: auto;
+}
+
+.stack:only-child {
+    block-size: 100%;
+}
+
+.stack > p {
+    border: 2px solid green;
+}
