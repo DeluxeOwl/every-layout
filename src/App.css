@@ -7,7 +7,8 @@
     flex-direction: column;
     justify-content: flex-start;
     /* if only child, elements will overflow with a high --space */
-    /* overflow: scroll;  or hidden*/
+    /* overflow: scroll; */
+    /* or hidden */
 }
 
 /* if you want recursive nesting */
@@ -29,4 +30,33 @@
 
 .stack > p {
     border: 2px solid green;
+}
+
+
+
+.box {
+    --s1:1rem;
+    /* ↓ Padding set to the first point on the modular scale */
+    padding: var(--s1);
+    --border-thin: 2px;
+    /* ↓ Assumes you have a --border-thin var */
+    border: var(--border-thin) solid;
+    /* ↓ Always apply the transparent outline, for high contrast mode */
+    outline: var(--border-thin) transparent;
+    outline-offset: calc(var(--border-thin) * -1);
+    /* ↓ The light and dark color vars */
+    --color-light: #fff;
+    --color-dark: #000;
+    color: var(--color-dark);
+    background-color: var(--color-light);
+}
+.box * {
+/* ↓ Force colors to inherit from the parent
+and honor inversion (below) */
+color: inherit;
+}
+.box.invert {
+/* ↓ The color vars inverted */
+color: var(--color-light);
+background-color: var(--color-dark);
 }
