@@ -1,8 +1,21 @@
 :root{
     --space:1.5rem;
 }
+
+.wrapper {
+    margin: 0 1rem 2rem 1rem;
+}
+.wrapper > div {
+    background-color: #f5f5f5;
+}
+
+h1 {
+    margin-block-start: 1rem;
+    margin-block-end: 1rem;
+}
+
 .stack {
-    background-color: #e6e6e6;
+    
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -51,12 +64,62 @@
     background-color: var(--color-light);
 }
 .box * {
-/* ↓ Force colors to inherit from the parent
-and honor inversion (below) */
-color: inherit;
+    /* ↓ Force colors to inherit from the parent
+    and honor inversion (below) */
+    color: inherit;
 }
 .box.invert {
-/* ↓ The color vars inverted */
-color: var(--color-light);
-background-color: var(--color-dark);
+    /* ↓ The color vars inverted */
+    color: var(--color-light);
+    background-color: var(--color-dark);
+}
+
+.center {
+    --s1: 1rem;
+	box-sizing: content-box;
+	max-inline-size: 60ch;
+	margin-inline: auto;
+	padding-inline-start: var(--s1);
+	padding-inline-end: var(--s1);
+    /* text-align: center; */
+}
+
+.center-flexbox {
+	box-sizing: content-box;
+	max-inline-size: 60ch;
+	margin-inline: auto;
+	display: flex;
+	flex-direction: column;
+    /* You can play with align-items here */
+	align-items: center;
+}
+
+/* .cluster { */
+    /* ↓ Set the Flexbox context */
+    /* display: flex; */
+    /* ↓ Enable wrapping */
+    /* flex-wrap: wrap; */
+    /* ↓ Set the space/gap */
+    /* gap: var(--space, 1rem); */
+    /* ↓ Choose your justification (flex-start is default) */
+    /* justify-content: center; */
+    /* ↓ Choose your alignment (flex-start is default) */
+    /* align-items: center; */
+/* } */
+
+.cluster {
+    --space: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space, 1rem);
+
+    /* justify-content: space-between;
+    align-items: center; */
+}
+.cluster.space-between {
+    justify-content: space-between;
+    align-items: center;
+}
+.cluster.flex-start {
+    justify-content: flex-start;
 }
