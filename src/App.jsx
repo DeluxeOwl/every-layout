@@ -100,6 +100,14 @@ function App() {
           </div> */}
         </div>
       </Container>
+      <Title>The Cover</Title>
+      <Container>
+        <div class="cover">
+          <div>Header</div>
+          <h1>Welcome to my website</h1>
+          <div>Footer</div>
+        </div>
+      </Container>
     </div>
   );
 }
