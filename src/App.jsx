@@ -58,7 +58,27 @@ function App() {
         </div>
       </Container>
       <Title>The sidebar</Title>
-      <Container></Container>
+      <Container>
+        <div className="flex-wrap">
+          <div className="box">Box 1</div>
+          <div className="box">Box 2</div>
+          <div className="box">Box 3</div>
+        </div>
+        <div className="with-sidebar">
+          <div>
+            <div className="box">Sidebar</div>
+          </div>
+          <div>
+            <div className="box">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sit
+              amet dolor a neque malesuada venenatis. Curabitur mi tortor,
+              convallis at nulla in, egestas cursus arcu. Phasellus pulvinar,
+              elit quis ornare pulvinar, orci felis molestie velit, a elementum
+              sapien odio vitae augue.
+            </div>
+          </div>
+        </div>
+      </Container>
     </div>
   );
 }
