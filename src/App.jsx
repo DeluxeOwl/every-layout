@@ -79,6 +79,27 @@ function App() {
           </div>
         </div>
       </Container>
+
+      <Title>The Switcher</Title>
+      <Container>
+        <div className="switcher">
+          <div className="box">
+            The quick brown fox jumps over the lazy dog.
+          </div>
+          <div className="box">
+            The quick brown fox jumps over the lazy dog.
+          </div>
+          <div className="box">
+            The quick brown fox jumps over the lazy dog.
+          </div>
+          <div className="box">
+            The quick brown fox jumps over the lazy dog.
+          </div>
+          {/* <div className="box">
+            The quick brown fox jumps over the lazy dog.
+          </div> */}
+        </div>
+      </Container>
     </div>
   );
 }
