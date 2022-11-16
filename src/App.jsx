@@ -177,6 +177,16 @@ function App() {
           </div>
         </div>
       </Container>
+
+      <Title>The Imposter</Title>
+      <Container>
+        <div style={{ position: "relative" }}>
+          <p>Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor</p>
+          <div class="imposter" style={{ backgroundColor: "hotpink" }}>
+            <p>Superimposed content</p>
+          </div>
+        </div>
+      </Container>
     </div>
   );
 }
