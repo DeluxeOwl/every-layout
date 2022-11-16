@@ -204,9 +204,7 @@ function App() {
       <Title>The Icon</Title>
       <Container>
         <button class="with-icon">
-          <label className="icon">
-            <Icon />
-          </label>
+          <Icon className="icon" />
           Close
         </button>
       </Container>
