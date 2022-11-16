@@ -8,6 +8,20 @@ function Title(props) {
 function Container(props) {
   return <div {...props}>{props.children}</div>;
 }
+function Icon({ props }) {
+  return (
+    <svg
+      {...props}
+      viewBox="0 0 10 10"
+      width="0.75em"
+      height="0.75em"
+      stroke="currentColor"
+      stroke-width="2"
+    >
+      <path d="M1,1 9,9 M9,1 1,9" />
+    </svg>
+  );
+}
 
 function App() {
   useEffect(() => {
@@ -186,6 +200,15 @@ function App() {
             <p>Superimposed content</p>
           </div>
         </div>
+      </Container>
+      <Title>The Icon</Title>
+      <Container>
+        <button class="with-icon">
+          <label className="icon">
+            <Icon />
+          </label>
+          Close
+        </button>
       </Container>
     </div>
   );
