@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { useRef } from "react";
 import "./App.css";
 
 function Title(props) {
@@ -8,6 +10,35 @@ function Container(props) {
 }
 
 function App() {
+  useEffect(() => {
+    (function () {
+      const className = "reel";
+      const reels = Array.from(document.querySelectorAll(`.${className}`));
+      const toggleOverflowClass = (elem) => {
+        elem.classList.toggle(
+          "overflowing",
+          elem.scrollWidth > elem.clientWidth
+        );
+      };
+      for (let reel of reels) {
+        if ("ResizeObserver" in window) {
+          new ResizeObserver((entries) => {
+            for (let entry of entries) {
+              toggleOverflowClass(entry.target);
+            }
+          }).observe(reel);
+        }
+        if ("MutationObserver" in window) {
+          new MutationObserver((entries) => {
+            for (let entry of entries) {
+              toggleOverflowClass(entry.target);
+            }
+          }).observe(reel, { childList: true });
+        }
+      }
+    })();
+  }, []);
+
   return (
     <div className="wrapper">
       <Title>The stack</Title>
@@ -79,7 +110,6 @@ function App() {
           </div>
         </div>
       </Container>
-
       <Title>The Switcher</Title>
       <Container>
         <div className="switcher">
@@ -102,10 +132,49 @@ function App() {
       </Container>
       <Title>The Cover</Title>
       <Container>
-        <div class="cover">
+        <div className="cover">
           <div>Header</div>
           <h1>Welcome to my website</h1>
           <div>Footer</div>
+        </div>
+      </Container>
+      <Title>The grid</Title>
+      <Container>
+        <div className="grid">
+          <div className="box">Box1</div>
+          <div className="box">Box2</div>
+          <div className="box">Box3</div>
+          <div className="box">Box4</div>
+          <div className="box">Box5</div>
+        </div>
+      </Container>
+      <Title>The Frame</Title>
+      <Container>
+        <div className="frame">
+          <img
+            alt="oranges"
+            src="https://images.unsplash.com/photo-1668603486663-5fd96b778391?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
+          />
+        </div>
+      </Container>
+      <Title>The Reel</Title>
+      <Container>
+        <div className="reel">
+          <div className="box">
+            The quick brown fox jumps over the lazy dog.
+          </div>
+          <div className="box">
+            The quick brown fox jumps over the lazy dog.
+          </div>
+          <div className="box">
+            The quick brown fox jumps over the lazy dog.
+          </div>
+          <div className="box">
+            The quick brown fox jumps over the lazy dog.
+          </div>
+          <div className="box">
+            The quick brown fox jumps over the lazy dog.
+          </div>
         </div>
       </Container>
     </div>

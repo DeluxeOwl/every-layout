@@ -211,3 +211,90 @@ h1 {
     margin-block: auto;
 }
     
+/* The grid */
+.grid {
+    /* ↓ Establish a grid context */
+    display: grid;
+    /* ↓ Set a gap between grid items */
+    grid-gap: 1rem;
+    /* ↓ Set the minimum column width */
+    --minimum: 20ch;
+}
+@supports (width: min(var(--minimum), 100%)) {
+    .grid {
+    /* ↓ Enhance with the min() function into multiple columns */
+        grid-template-columns: repeat(auto-fit, minmax(min(var(--minimum), 100%), 1fr));
+    }
+}
+
+/* The frame */
+.frame {
+    --n: 16; /* numerator */
+    --d: 9; /* denominator */
+    aspect-ratio: var(--n) / var(--d);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 16px;
+}
+.frame > img,
+.frame > video {
+    inline-size: 100%;
+    block-size: 100%;
+    object-fit: cover;
+    /* You can play with this */
+    object-position: 50% 50%;
+}
+/* The reel */
+.reel {
+    /* ↓ Custom properties for ease of adjustment */
+     --space: 1rem;
+     --color-light: #fff;
+     --color-dark: #000;
+     --reel-height: auto;
+     --item-width: 25ch;
+     display: flex;
+     block-size: var(--reel-height);
+    /* ↓ Overflow */
+     overflow-x: auto;
+     overflow-y: hidden;
+    /* ↓ For Firefox */
+     scrollbar-color: var(--color-light) var(--color-dark);
+}
+ reel-l::-webkit-scrollbar {
+    /* ↓ Instead, you could make the scrollbar height a variable too. This is left as an exercise (be mindful of the linear-gradient!) */
+     block-size: 1rem;
+}
+ reel-l::-webkit-scrollbar-track {
+     background-color: var(--color-dark);
+}
+ reel-l::-webkit-scrollbar-thumb {
+     background-color: var(--color-dark);
+    /* ↓ Linear gradient ‘insets’ the white thumb within the black bar */
+     background-image: linear-gradient(var(--color-dark) 0, var(--color-dark) 0.25rem, var(--color-light) 0.25rem, var(--color-light) 0.75rem, var(--color- dark) 0.75rem);
+}
+ .reel > * {
+    /* ↓ Just a `width` wouldn’t work because `flex-shrink: 1` (default) still applies */
+     flex: 0 0 var(--item-width);
+}
+ reel-l > img {
+    /* ↓ Reset for images */
+     block-size: 100%;
+     flex-basis: auto;
+     width: auto;
+}
+.reel > * + * {
+    margin-inline-start: var(--space);
+}
+.reel.overflowing:not(.no-bar) {
+   /* ↓ Only apply if there is a scrollbar (see the JavaScript) */
+    padding-block-end: var(--space);
+}
+/* ↓ Hide scrollbar with `no-bar` class */
+.reel.no-bar {
+    scrollbar-width: none;
+}
+.reel.no-bar::-webkit-scrollbar {
+    display: none;
+}
